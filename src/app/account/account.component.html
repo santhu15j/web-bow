@@ -1,0 +1,43 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="account-container">
+  <mat-toolbar class="mat-elevation-z2 header-container fixed top">
+    <mat-toolbar-row>
+      <div class="mat-title" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <!--a>Home</a>
+        <a>Services</a>
+        <a>Terms & Conditions</a-->
+        <a routerLink="signup" routerLinkActive="active">Signup</a>
+        <a routerLink="login" routerLinkActive="active">Login</a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div fxFlex="60%" fxFlex.xs="90%" fxLayout="row" class="mat-elevation-z2 container">
+    <div fxFlex="1 1 100%" class="form-container">
+      <router-outlet></router-outlet>
+    </div>
+    <div fxFlex="1 1 100%" fxHide.xs class="info-container">
+      <ui-carousel [autoPlaySpeed]="5000" [infinite]="true" [fade]="false" [arrows]="false" [speed]="200" height="100%" width="100%">
+        <ui-carousel-item>
+          <ng-container *ngTemplateOutlet="slideTemplate; context: info[0]"></ng-container>
+        </ui-carousel-item>
+        <ui-carousel-item>
+          <ng-container *ngTemplateOutlet="slideTemplate; context: info[1]"></ng-container>
+        </ui-carousel-item>
+        <ui-carousel-item>
+          <ng-container *ngTemplateOutlet="slideTemplate; context: info[2]"></ng-container>
+        </ui-carousel-item>
+      </ui-carousel>
+    </div>
+  </div>
+</div>
+
+<ng-template #slideTemplate let-image="image" let-title="title" let-description="description">
+  <div class="likes-world-info" fxLayout="column" fxLayoutAlign="center">
+    <div class="slide-image" fxFlex="0 1 100%" [style.background-image]="'url('+image+')'">
+
+    </div>
+    <div class="slide-info" fxFlex="2 2 100%">
+      <div class="mat-headline" fxLayout="row" fxLayoutAlign="center">{{ title }}</div>
+      <div class="mat-body-1" fxLayout="row" fxLayoutAlign="center">{{ description }}</div>
+    </div>
+  </div>
+</ng-template>

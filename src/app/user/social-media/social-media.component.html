@@ -1,0 +1,49 @@
+<div class="social-media-container">
+  <div class="breadcrumbs mat-caption m-b-20">
+    <a routerLink="/user">Home</a> &nbsp; > &nbsp;
+    <a routerLink="/user/social-media">Social Media</a>
+  </div>
+  <div class="summary-cards" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+    <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="20%" fxFlex.xs="100%" class="mat-elevation-z2 m-b-20 deep-orange">
+      <ng-container *ngTemplateOutlet="summaryCardTemplate; context: { count: 2, info: 'PENDING', font: 'fa', icon: 'fa-sync-alt'}"></ng-container>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="20%" fxFlex.xs="100%" class="mat-elevation-z2 m-b-20 blue">
+      <ng-container *ngTemplateOutlet="summaryCardTemplate; context: { count: 13, info: 'IN PROGRESS', font: 'fa', icon: 'fa-spinner'}"></ng-container>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="20%" fxFlex.xs="100%" class="mat-elevation-z2 m-b-20 red">
+      <ng-container *ngTemplateOutlet="summaryCardTemplate; context: { count: 3, info: 'REFUNDED', font: 'far', icon: 'fa-times-circle'}"></ng-container>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" fxFlex="20%" fxFlex.xs="100%" class="mat-elevation-z2 m-b-20 green">
+      <ng-container *ngTemplateOutlet="summaryCardTemplate; context: { count: 158, info: 'COMPLETED', font: 'far', icon: 'fa-check-square'}"></ng-container>
+    </div>
+  </div>
+  <div class="order-container m-t-20" fxLayout="row">
+    <div fxFlex="60%" fxFlex.xs="100%">
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let serviceCategory of serviceCategories">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <!--mat-icon fontSet="fab" fontIcon="fa-instagram"></mat-icon-->
+              <div class="service-category-icon" [style.background-image]="'url(' + serviceCategory.icon + ')'"></div>
+              {{ serviceCategory.title }}
+            </mat-panel-title>
+            <mat-panel-description fxHide.xs>
+              {{ serviceCategory.description }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <lw-add-order [serviceCategory]="serviceCategory"></lw-add-order>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+  </div>
+</div>
+
+<ng-template #summaryCardTemplate let-count="count" let-info="info" let-font="font" let-icon="icon">
+  <div fxLayout="column">
+    <div class="mat-display-1">{{ count }}</div>
+    <div class="mat-subheading-2">{{ info }}</div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon [fontSet]="font" [fontIcon]="icon"></mat-icon>
+  </div>
+</ng-template>

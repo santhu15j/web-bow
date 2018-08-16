@@ -1,0 +1,49 @@
+@import '~@angular/material/theming';
+@import 'src/styles/theme.scss';
+.account-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-container {
+  padding: 5%;
+  background-color: mat-color($likes-world-app-primary);
+}
+
+.info-container {
+  padding: 2%;
+  background-color: #EFEFEF;
+}
+
+.likes-world-info {
+  height: 100%;
+}
+
+.header-container {
+  width: 100%;
+  background: white;
+  div {
+    width: 100%;
+  }
+  .active {
+    color: mat-color($likes-world-app-primary);
+  }
+}
+
+.slide-image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+:host /deep/ .ui-carousel-item {
+  background: transparent !important;
+}
+
+:host /deep/ .dot.active {
+  background-color: mat-color($likes-world-app-primary);
+}
+
+.mat-title {
+  margin: 0;
+}

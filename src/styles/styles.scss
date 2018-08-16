@@ -1,0 +1,69 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0px;
+  background-color: white;
+  min-width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+* {
+  font-family: 'Roboto' !important;
+}
+
+.fa,
+.far,
+.fas {
+  font-family: "Font Awesome 5 Free" !important;
+  color: #ABABAB;
+}
+
+.fab {
+  font-family: "Font Awesome 5 Brands" !important;
+  color: #ABABAB;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.m-b-10 {
+  margin-bottom: 10px;
+}
+
+.m-b-20 {
+  margin-bottom: 20px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-l-20 {
+  margin-left: 20px !important;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}

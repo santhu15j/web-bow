@@ -1,0 +1,67 @@
+@import '~@angular/material/theming';
+@import 'src/styles/theme.scss';
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  background: white;
+}
+
+.main-container {
+  padding: 54px 0 30px 0;
+  background: white;
+  position: static;
+  height: 100%;
+}
+
+.menu-container {
+  width: 250px;
+  height: 100vh;
+  background: white;
+  position: fixed;
+  padding: 54px 0 30px 0; // border-right: 10px solid #EFEFEF;
+  .amount-info {
+    background: #FAFAFA;
+    padding: 5px;
+  }
+  a.active,
+  a.active mat-icon {
+    background-color: mat-color($likes-world-app-accent) !important;
+    color: white;
+    &:hover {
+      background-color: mat-color($likes-world-app-accent);
+      color: white;
+    }
+  }
+}
+
+.header-container,
+.footer-container {
+  z-index: 100;
+  background: white;
+}
+
+.header-container {
+  border-bottom: 2px solid mat-color($likes-world-app-primary);
+}
+
+.footer-container {
+  padding: 5px;
+}
+
+.toolbar-container {
+  width: 100%;
+  .menu-trigger {
+    font-size: 20px;
+    margin-right: 10px;
+  }
+  .profile-trigger {
+    font-size: 24px;
+  }
+  .amount-info {
+    margin-right: 10px;
+  }
+}
+
+.content-container {
+  background: #FAFAFA;
+}

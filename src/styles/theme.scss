@@ -1,0 +1,79 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$mat-likes-world-primary: ( 50: #ffeeea, 100: #ffd5ca, 200: #ffb9a6, 300: #ff9c82, 400: #ff8768, 500: #ff724d, 600: #ff6a46, 700: #ff5f3d, 800: #ff5534, 900: #ff4225, A100: #ffffff, A200: #ffffff, A400: #ffd8d3, A700: #ffc1b9, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #ffffff, 600: #000000, 700: #000000, 800: #000000, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000, ));
+$mat-likes-world-accent: ( 50: #e2f5fe, 100: #b7e6fb, 200: #87d6f9, 300: #57c5f7, 400: #33b8f5, 500: #0facf3, 600: #0da5f1, 700: #0b9bef, 800: #0892ed, 900: #0482ea, A100: #ffffff, A200: #deeeff, A400: #abd5ff, A700: #91c8ff, contrast: ( 50: #000000, 100: #000000, 200: #000000, 300: #000000, 400: #000000, 500: #ffffff, 600: #000000, 700: #ffffff, 800: #ffffff, 900: #ffffff, A100: #000000, A200: #000000, A400: #000000, A700: #000000, ));
+$likes-world-app-primary: mat-palette($mat-likes-world-primary);
+$likes-world-app-accent: mat-palette($mat-likes-world-accent);
+// The warn palette is optional (defaults to red).
+$likes-world-app-warn: mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$likes-world-app-theme: mat-light-theme($likes-world-app-primary, $likes-world-app-accent, $likes-world-app-warn);
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($likes-world-app-theme);
+$likes-world-typography: mat-typography-config( $font-family: 'Roboto');
+@include angular-material-typography($likes-world-typography);
+.mat-headline {
+  margin: 0 0 0 0;
+}
+
+.mat-form-field-prefix .mat-icon,
+.mat-form-field-suffix .mat-icon {
+  width: 24px !important;
+  font-size: 100%;
+  color: #ABABAB;
+}
+
+.h-48 {
+  height: 48px;
+  min-height: 48px;
+}
+
+.mat-spinner circle {
+  stroke: white;
+}
+
+.mat-toolbar-row,
+.mat-toolbar {
+  min-height: 54px !important;
+  height: 54px !important;
+}
+
+.mat-menu-item .mat-icon {
+  vertical-align: initial !important;
+  margin-right: 0px !important;
+}
+
+.mat-menu-item {
+  font-size: 14px !important;
+}
+
+.mat-list-item .mat-icon {
+  position: relative;
+  top: 5px;
+  margin-right: 5px;
+}
+
+.mat-nav-list {
+  padding-top: 0px !important;
+}
+
+.info-text {
+  color: mat-color($mat-blue, 500) !important;
+}
+
+.success-text {
+  color: mat-color($mat-green, 500) !important;
+}
+
+.alert-text {
+  color: mat-color($mat-red, 500) !important;
+}

@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+.social-media-container {
+  padding: 20px;
+}
+
+.summary-cards>div {
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  &.deep-orange {
+    background-color: mat-color($mat-deep-orange, 300);
+  }
+  &.red {
+    background-color: mat-color($mat-red, 300);
+  }
+  &.blue {
+    background-color: mat-color($mat-blue, 300);
+  }
+  &.green {
+    background-color: mat-color($mat-green, 300);
+  }
+  .mat-display-1,
+  .mat-subheading-2 {
+    margin: 0
+  }
+  mat-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 34px;
+    color: white;
+  }
+}
+
+.service-category-icon {
+  width: 40px;
+  margin-right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

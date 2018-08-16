@@ -1,0 +1,83 @@
+<form [formGroup]="addOrderForm">
+  <div fxLayout="row">
+    <mat-form-field fxFlex="30%">
+      <mat-select placeholder="Category" formControlName="subCategoryId" (change)="onSubCategoryChange($event.value)">
+        <mat-option *ngFor="let subCategory of subCategories" [value]="subCategory.id">
+          {{ subCategory.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="subCategoryId.hasError('required')">
+        Required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field fxFlex="70%" class="m-b-20">
+      <mat-select placeholder="Service" formControlName="serviceId" [disabled]="!addOrderForm.value.subCategoryId" (change)="onServiceDetailChange($event.value)">
+        <mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail.id">
+          {{ serviceDetail.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="serviceId.hasError('required')">
+        Required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" class="m-b-10">
+    <mat-form-field fxFlex="100%">
+      <textarea rows="3" matInput placeholder="Description" disabled [value]="selectedServiceDetail && selectedServiceDetail.description ? selectedServiceDetail.description : ''"></textarea>
+      <!--mat-hint align="end">Time:
+      <span class="success-text">0 - 1 hours</span>
+    </mat-hint-->
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" class="m-b-10">
+    <mat-form-field fxFlex="100%">
+      <input type="text" matInput placeholder="Link / URL" formControlName="link" />
+      <mat-error *ngIf="link.hasError('required')">
+        Required
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" class="m-b-10">
+    <mat-form-field fxFlex="100%">
+      <input type="number" matInput placeholder="Quantity" formControlName="quantity" />
+      <mat-hint align="end" *ngIf="selectedServiceDetail">Min:
+        <span class="success-text">{{ selectedServiceDetail.minQuantity }}</span>, Max:
+        <span class="alert-text">{{ selectedServiceDetail.maxQuantity }}</span>
+      </mat-hint>
+      <mat-error *ngIf="quantity.hasError('required')">
+        Required
+      </mat-error>
+      <mat-error *ngIf="quantity.hasError('min')">
+        Minimum quantity: {{ selectedServiceDetail.minQuantity }}
+      </mat-error>
+      <mat-error *ngIf="quantity.hasError('max')">
+        Maximun quantity: {{ selectedServiceDetail.maxQuantity }}
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" class="m-b-10">
+    <mat-form-field fxFlex="100%">
+      <input type="text" matInput placeholder="Budget" disabled [value]="selectedServiceDetail ? addOrderForm.value.quantity * selectedServiceDetail.servicePrice : null"
+      />
+      <mat-hint align="end" *ngIf="selectedServiceDetail">Price:
+        <span class="success-text">Rs {{ selectedServiceDetail.servicePrice }}</span>
+      </mat-hint>
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" class="m-b-10">
+    <mat-slide-toggle formControlName="agree">
+      <span class="mat-caption">
+        Yes, I have confirmed the order! Accepting
+        <a routerLink="/account/terms-of-service">terms & conditions.</a>
+      </span>
+    </mat-slide-toggle>
+  </div>
+
+  <mat-action-row>
+    <button mat-button color="warn">CANCEL</button>
+    <button mat-raised-button class="m-l-20" color="accent" (click)="addOrder()" [disabled]="!addOrderForm.valid">
+      <mat-spinner *ngIf="apiProgress" [diameter]="30"></mat-spinner>
+      <span *ngIf="!apiProgress">SUBMIT</span>
+    </button>
+  </mat-action-row>
+</form>
