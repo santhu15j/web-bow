@@ -1,0 +1,88 @@
+.order-history-container {
+  padding: 20px;
+}
+
+.order-history {
+  position: relative;
+}
+
+.order-history-table-container {
+  position: relative;
+  min-height: calc(100vh - 100px);
+}
+
+table {
+  width: 100%;
+}
+
+.order-history-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-history-no-data {
+  color: #980000;
+  max-width: 360px;
+  text-align: center;
+}
+
+.mat-column-Order-ID {
+  flex: 0 0 10%;
+}
+
+.mat-column-Quantity,
+.mat-column-Amount {
+  flex: 0 0 10%;
+}
+
+.mat-column-Status,
+.mat-column-Order-Time {
+  flex: 0 0 12%;
+}
+
+.mat-column-Service {
+  flex: 0 0 25%;
+}
+
+.mobile {
+  .mat-column-Order-ID {
+    flex: 0 0 20%;
+  }
+  .mat-column-Service {
+    flex: 0 0 50%;
+  }
+  .mat-column-Status {
+    flex: 0 0 30%;
+  }
+}
+
+.mat-chip {
+  padding: 3px 12px !important;
+}
+
+.service-category-icon {
+  width: 50px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.service-column {
+  display: flex;
+}
+
+.service-parent-name {
+  margin-bottom: 3px;
+}
+
+.mat-row {
+  min-height: 54px;
+}

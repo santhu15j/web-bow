@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Subscription } from 'rxjs/Subscription';
 import { CoreHelperService, ApiHelperService } from '../shared/services';
 
 @Component( {
@@ -9,12 +7,9 @@ import { CoreHelperService, ApiHelperService } from '../shared/services';
   styleUrls: [ './user.component.scss' ]
 } )
 export class UserComponent implements OnInit {
-  public isMobile: boolean = false;
-  public watcherSubscription: Subscription = null;
   public userModel = this._apiHelper.getCache( 'usermodel' );
 
   constructor(
-    public _media: ObservableMedia,
     public _coreHelper: CoreHelperService,
     public _apiHelper: ApiHelperService
   ) {
@@ -22,16 +17,10 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.watcherSubscription = this._media.subscribe( ( change: MediaChange ) => {
-      this.isMobile = change.mqAlias === 'xs';
-    } );
+
   }
 
   logout() {
     this._apiHelper.logout().subscribe();
-  }
-
-  ngOnDestroy() {
-    this._coreHelper.unsubscribe( [ this.watcherSubscription ] );
   }
 }

@@ -11,11 +11,16 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: '/user/social-media'
+        redirectTo: '/user/social-media',
+        pathMatch: 'full'
       },
       {
         path: 'social-media',
         loadChildren: 'app/user/social-media/social-media.module#SocialMediaModule'
+      },
+      {
+        path: 'order-history',
+        loadChildren: 'app/user/order-history/order-history.module#OrderHistoryModule'
       }
     ]
   }

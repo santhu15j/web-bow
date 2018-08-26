@@ -37,8 +37,10 @@ $likes-world-typography: mat-typography-config( $font-family: 'Roboto');
   min-height: 48px;
 }
 
-.mat-spinner circle {
-  stroke: white;
+button {
+  .mat-spinner circle {
+    stroke: white;
+  }
 }
 
 .mat-toolbar-row,
@@ -76,4 +78,23 @@ $likes-world-typography: mat-typography-config( $font-family: 'Roboto');
 
 .alert-text {
   color: mat-color($mat-red, 500) !important;
+}
+
+.grey-text {
+  color: mat-color($mat-grey, 500) !important;
+}
+
+.info-chip {
+  background-color: mat-color($mat-blue, 500) !important;
+  color: white !important;
+}
+
+.success-chip {
+  background-color: mat-color($mat-green, 500) !important;
+  color: white !important;
+}
+
+.alert-chip {
+  background-color: mat-color($mat-red, 500) !important;
+  color: white !important;
 }

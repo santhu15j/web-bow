@@ -26,10 +26,10 @@
   a.active,
   a.active mat-icon {
     background-color: mat-color($likes-world-app-accent) !important;
-    color: white;
+    color: white !important;
     &:hover {
       background-color: mat-color($likes-world-app-accent);
-      color: white;
+      color: white !important;
     }
   }
 }

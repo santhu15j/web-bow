@@ -111,4 +111,9 @@ export class ApiHelperService {
     const url = 'mediaPromotion/order/placeOrder';
     return this.postRequest( url, { ...order, session: this.userModel.session } );
   }
+
+  getOrderHistory( page: number = 1 ) {
+    const url = 'mediaPromotion/order/orderHistory';
+    return this.postRequest( url, { page: page, session: this.userModel.session } );
+  }
 }
