@@ -16,7 +16,7 @@ export class OrderHistoryComponent implements OnInit {
 
   constructor(
     private _apiHelper: ApiHelperService,
-    private _coreHelper: CoreHelperService
+    public _coreHelper: CoreHelperService
   ) {
 
   }

@@ -84,6 +84,10 @@ button {
   color: mat-color($mat-grey, 500) !important;
 }
 
+.primary-text {
+  color: mat-color($likes-world-app-primary) !important;
+}
+
 .info-chip {
   background-color: mat-color($mat-blue, 500) !important;
   color: white !important;

@@ -1,11 +1,12 @@
-.add-funds-container {
+.add-funds-container,
+.add-funds {
   padding: 20px;
 }
 
-.qr-code {
-  width: 150px;
-  height: 150px;
+.paytm-qr-code {
+  width: 100%;
+  height: 200px;
   background-size: contain;
   background-repeat: no-repeat;
-  background-image: url('/assets/qr.jpg')
+  background-image: url('/assets/Paytm.png')
 }

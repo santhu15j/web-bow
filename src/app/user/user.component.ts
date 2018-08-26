@@ -13,7 +13,7 @@ export class UserComponent implements OnInit {
   constructor(
     public _coreHelper: CoreHelperService,
     public _apiHelper: ApiHelperService,
-    private _router: Router
+    public _router: Router
   ) {
 
   }
