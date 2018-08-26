@@ -21,6 +21,10 @@ export const routes: Routes = [
       {
         path: 'order-history',
         loadChildren: 'app/user/order-history/order-history.module#OrderHistoryModule'
+      },
+      {
+        path: 'add-funds',
+        loadChildren: 'app/user/add-funds/add-funds.module#AddFundsModule'
       }
     ]
   }

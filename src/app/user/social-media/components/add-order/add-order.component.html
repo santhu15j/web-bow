@@ -75,8 +75,9 @@
 
   <mat-action-row>
     <button mat-button color="warn">CANCEL</button>
-    <button mat-raised-button class="m-l-20" color="accent" (click)="addOrder()" [disabled]="!addOrderForm.valid">
-      <mat-spinner *ngIf="apiProgress" [diameter]="30"></mat-spinner>
+    <button mat-raised-button class="m-l-20" fxLayout="row" fxLayoutAlign="center center" color="accent" (click)="addOrder()"
+      [disabled]="!addOrderForm.valid">
+      <mat-spinner *ngIf="apiProgress" [diameter]="20"></mat-spinner>
       <span *ngIf="!apiProgress">SUBMIT</span>
     </button>
   </mat-action-row>

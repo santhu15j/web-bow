@@ -10,7 +10,7 @@
         </div>
         <div fxLayout="row" fxLayoutAlign="center center">
           <mat-chip-list class="amount-info" *ngIf="!_coreHelper.isMobile">
-            <mat-chip>Rs 500.00</mat-chip>
+            <mat-chip>Rs {{ userModel.balance }}</mat-chip>
           </mat-chip-list>
           <button mat-icon-button class="notifcations-trigger">
             <mat-icon aria-label="Notifications trigger" fontSet="far" fontIcon="fa-bell"></mat-icon>
@@ -27,9 +27,9 @@
               <mat-icon fontSet="fa" fontIcon="fa-cog"></mat-icon>
               <span>Account Settings</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="_router.navigate(['/user/add-funds'])">
               <mat-icon fontSet="fa" fontIcon="fa-hand-holding-usd"></mat-icon>
-              <span>Add Money</span>
+              <span>Add Funds</span>
             </button>
             <mat-divider></mat-divider>
             <button mat-menu-item (click)="logout()">
@@ -49,11 +49,11 @@
           <mat-icon fontSet="fa" fontIcon="fa-cart-plus"></mat-icon>
           Social Media
         </a>
-        <!--a mat-list-item>
+        <a mat-list-item routerLink="/user/add-funds" routerLinkActive="active">
           <mat-icon fontSet="fa" fontIcon="fa-hand-holding-usd"></mat-icon>
-          Funds
+          Add Funds
         </a>
-        <a mat-list-item>
+        <!--a mat-list-item>
           <mat-icon fontSet="fa" fontIcon="fa-bell"></mat-icon>
           Notifications
         </a-->

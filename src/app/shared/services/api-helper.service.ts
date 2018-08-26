@@ -116,4 +116,9 @@ export class ApiHelperService {
     const url = 'mediaPromotion/order/orderHistory';
     return this.postRequest( url, { page: page, session: this.userModel.session } );
   }
+
+  addFunds( id, amount ) {
+    const url = 'mediaPromotion/user/userAddMoney';
+    return this.postRequest( url, { txnId: id, amount: amount, session: this.userModel.session } );
+  }
 }

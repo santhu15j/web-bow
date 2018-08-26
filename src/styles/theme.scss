@@ -98,3 +98,7 @@ button {
   background-color: mat-color($mat-red, 500) !important;
   color: white !important;
 }
+
+button {
+  min-height: 36px;
+}

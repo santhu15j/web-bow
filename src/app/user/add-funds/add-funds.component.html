@@ -1,0 +1,67 @@
+<div class="add-funds-container">
+  <div class="breadcrumbs mat-caption m-b-20">
+    <a routerLink="/user">Home</a> &nbsp; > &nbsp;
+    <a routerLink="/user/add-funds">Add Funds</a>
+  </div>
+  <div class="add-funds mat-elevation-z2">
+    <mat-tab-group>
+      <mat-tab label="Paytm">
+        <mat-vertical-stepper [linear]="true" #stepper>
+          <ng-template matStepperIcon="edit">
+            <mat-icon>check</mat-icon>
+          </ng-template>
+          <mat-step [stepControl]="scanForm">
+            <form [formGroup]="scanForm">
+              <ng-template matStepLabel>Scan the QR code and send money from your paytm</ng-template>
+              <div class="alert-text mat-caption m-b-10">
+                *Minimum 5 INR - Less than the specified amount will not be refunded
+              </div>
+              <div class="qr-code m-b-10">
+
+              </div>
+              <div>
+                <button mat-button matStepperNext (click)="setScanned(stepper)">Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="addFundsForm">
+            <form [formGroup]="addFundsForm">
+              <ng-template matStepLabel>Fill the order ID and Amount</ng-template>
+              <div class="w-350">
+                <mat-form-field class="full-width m-b-10" color="accent" floatLabel="always">
+                  <input matInput type="text" placeholder="Order ID" formControlName="orderId">
+                  <mat-error *ngIf="orderId.hasError('required')">
+                    Order ID is required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="w-350">
+                <mat-form-field class="full-width m-b-10" color="accent" floatLabel="always">
+                  <input matInput type="number" placeholder="Amount" formControlName="amount">
+                  <mat-error *ngIf="amount.hasError('required')">
+                    Amount is required
+                  </mat-error>
+                  <mat-error *ngIf="amount.hasError('min')">
+                    Amount should be greated than 5
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div>
+                <button mat-raised-button fxLayout="row" fxLayoutAlign="center center" color="primary" [disabled]="!addFundsForm.valid" (click)="addFunds(stepper)">
+                  <mat-spinner *ngIf="apiProgress" [diameter]="20"></mat-spinner>
+                  <span *ngIf="!apiProgress">Add Funds</span>
+                </button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Request Submitted</ng-template>
+            <div>
+              <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

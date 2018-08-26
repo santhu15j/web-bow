@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CoreHelperService, ApiHelperService } from '../shared/services';
+import { Router } from '@angular/router';
 
 @Component( {
   selector: 'lw-user',
@@ -11,7 +12,8 @@ export class UserComponent implements OnInit {
 
   constructor(
     public _coreHelper: CoreHelperService,
-    public _apiHelper: ApiHelperService
+    public _apiHelper: ApiHelperService,
+    private _router: Router
   ) {
 
   }

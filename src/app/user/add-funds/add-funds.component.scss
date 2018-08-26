@@ -1,0 +1,11 @@
+.add-funds-container {
+  padding: 20px;
+}
+
+.qr-code {
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: url('/assets/qr.jpg')
+}
