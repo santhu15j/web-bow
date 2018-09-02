@@ -14,76 +14,78 @@
     <div class="order-history-table-container">
       <mat-paginator showFirstLastButtons="true" length="1000" pageSize="25" [pageIndex]="currentPage - 1" (page)="getOrderHistory($event.pageIndex + 1)">
       </mat-paginator>
+      <div fxLayout="row" class="order-history-table">
+        <mat-table #table [dataSource]="orders" fxFlex="100%" fxFlex.xs="1200px" fxFlex.sm="1200px">
 
-      <mat-table #table [dataSource]="orders" class="order-history-table" [class.mobile]="_coreHelper.isMobile">
+          <!-- Order Id Column -->
+          <ng-container matColumnDef="Order ID">
+            <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <b> #{{ order.orderId }} </b>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Order Id Column -->
-        <ng-container matColumnDef="Order ID">
-          <mat-header-cell *matHeaderCellDef> Order ID </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <b> #{{ order.orderId }} </b>
-          </mat-cell>
-        </ng-container>
-
-        <!-- Service Column -->
-        <ng-container matColumnDef="Service">
-          <mat-header-cell *matHeaderCellDef> Service </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <div class="service-column">
-              <div class="service-category-icon" [style.background-image]="'url(' + order.icon + ')'"></div>
-              <div>
-                <div class="service-parent-name">
-                  <b>{{ order.parentName }}</b>
+          <!-- Service Column -->
+          <ng-container matColumnDef="Service">
+            <mat-header-cell *matHeaderCellDef> Service </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <div class="service-column">
+                <div class="service-category-icon" [style.background-image]="'url(' + order.icon + ')'"></div>
+                <div>
+                  <div class="service-parent-name">
+                    <b>{{ order.parentName }}</b>
+                  </div>
+                  <div class="mat-caption grey-text"> {{ order.name }}</div>
                 </div>
-                <div class="mat-caption grey-text" *ngIf="!_coreHelper.isMobile"> {{ order.name }}</div>
               </div>
-            </div>
-          </mat-cell>
-        </ng-container>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Status Column -->
-        <ng-container matColumnDef="Status">
-          <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <mat-chip [ngClass]="{ 'success-chip': order.status === 'Completed', 'alert-chip': order.status === 'Refunded', 'info-chip': order.status === 'Processing'}">{{ order.status }} </mat-chip>
-          </mat-cell>
-        </ng-container>
+          <!-- Status Column -->
+          <ng-container matColumnDef="Status">
+            <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <mat-chip [ngClass]="{ 'success-chip': order.status === 'Completed', 'alert-chip': order.status === 'Refunded', 'info-chip': order.status === 'Processing'}">{{
+                order.status }} </mat-chip>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Quantity Column -->
-        <ng-container matColumnDef="Quantity">
-          <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <span class="mat-caption grey-text">{{ order.quantity }} </span>
-          </mat-cell>
-        </ng-container>
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="Quantity">
+            <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <span class="mat-caption grey-text">{{ order.quantity }} </span>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Amount Column -->
-        <ng-container matColumnDef="Amount">
-          <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <b class="mat-caption">{{ order.amount }} </b>
-          </mat-cell>
-        </ng-container>
+          <!-- Amount Column -->
+          <ng-container matColumnDef="Amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <b class="mat-caption">{{ order.amount }} </b>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Order Time Column -->
-        <ng-container matColumnDef="Order Time">
-          <mat-header-cell *matHeaderCellDef> Order Time </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <span class="mat-caption grey-text">{{ order.creationDateInMillis | date: 'MMM d, y, h:mm a' }} </span>
-          </mat-cell>
-        </ng-container>
+          <!-- Order Time Column -->
+          <ng-container matColumnDef="Order Time">
+            <mat-header-cell *matHeaderCellDef> Order Time </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <span class="mat-caption grey-text">{{ order.creationDateInMillis | date: 'MMM d, y, h:mm a' }} </span>
+            </mat-cell>
+          </ng-container>
 
-        <!-- Link Column -->
-        <ng-container matColumnDef="Link">
-          <mat-header-cell *matHeaderCellDef> </mat-header-cell>
-          <mat-cell *matCellDef="let order">
-            <a class="mat-caption">{{ order.link }} </a>
-          </mat-cell>
-        </ng-container>
+          <!-- Link Column -->
+          <ng-container matColumnDef="Link">
+            <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+            <mat-cell *matCellDef="let order">
+              <a class="mat-caption">{{ order.link }} </a>
+            </mat-cell>
+          </ng-container>
 
-        <mat-header-row *matHeaderRowDef="_coreHelper.isMobile ? orderColumnsInMobile : orderColumns"></mat-header-row>
-        <mat-row *matRowDef="let order; columns: _coreHelper.isMobile ? orderColumnsInMobile : orderColumns;"></mat-row>
-      </mat-table>
+          <mat-header-row *matHeaderRowDef="orderColumns"></mat-header-row>
+          <mat-row *matRowDef="let order; columns: orderColumns;"></mat-row>
+        </mat-table>
+      </div>
     </div>
   </div>
 </div>

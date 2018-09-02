@@ -9,10 +9,12 @@
 .order-history-table-container {
   position: relative;
   min-height: calc(100vh - 100px);
+  width: 100%;
 }
 
-table {
+.order-history-table {
   width: 100%;
+  overflow: auto;
 }
 
 .order-history-loading-shade {
@@ -50,18 +52,6 @@ table {
 
 .mat-column-Service {
   flex: 0 0 25%;
-}
-
-.mobile {
-  .mat-column-Order-ID {
-    flex: 0 0 20%;
-  }
-  .mat-column-Service {
-    flex: 0 0 50%;
-  }
-  .mat-column-Status {
-    flex: 0 0 30%;
-  }
 }
 
 .mat-chip {

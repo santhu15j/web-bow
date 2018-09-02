@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OrderHistoryComponent } from './order-history.component';
 import { OrderHistoryRoutingModule } from './order-history-routing-module';
 import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatChipsModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule( {
   imports: [
@@ -11,7 +12,8 @@ import { MatTableModule, MatProgressSpinnerModule, MatPaginatorModule, MatChipsM
     MatTableModule,
     MatProgressSpinnerModule,
     MatPaginatorModule,
-    MatChipsModule
+    MatChipsModule,
+    FlexLayoutModule
   ],
   declarations: [ OrderHistoryComponent ]
 } )

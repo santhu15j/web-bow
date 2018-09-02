@@ -5,12 +5,14 @@ import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 @Injectable()
 export class CoreHelperService {
   public isMobile: boolean = false;
+  public mqAlias: string = null;
 
   constructor(
     private _media: ObservableMedia
   ) {
     this._media.subscribe( ( change: MediaChange ) => {
       this.isMobile = change.mqAlias === 'xs';
+      this.mqAlias = change.mqAlias;
     } );
   }
 
