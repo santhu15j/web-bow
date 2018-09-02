@@ -1,0 +1,66 @@
+<form [formGroup]="addFundsForm">
+  <div class="add-funds" fxLayout="row" fxLayout.xs="column">
+    <div fxFlex="50%" fxFlex.xs="100%" class="m-b-20">
+      <div class="bank-image m-b-20">
+
+      </div>
+      <div class="w-350">
+        <mat-form-field class="full-width m-b-20" color="accent" floatLabel="always">
+          <input matInput type="number" placeholder="Amount (Rs.)" formControlName="amount">
+          <mat-error *ngIf="amount.hasError('required')">
+            Amount is required
+          </mat-error>
+          <mat-error *ngIf="amount.hasError('min')">
+            Amount should be greated than 5
+          </mat-error>
+          <mat-hint align="start">
+            Enter the amount which you have sent to the above Bank account.
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="w-350">
+        <mat-form-field class="full-width m-b-20" color="accent" floatLabel="always">
+          <input matInput type="text" placeholder="Transferred from" formControlName="orderId">
+          <mat-error *ngIf="orderId.hasError('required')">
+            Order ID is required
+          </mat-error>
+          <mat-hint align="start">
+            Enter the Mobile Number from which you have transferred.
+          </mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div class="m-t-20">
+        <button mat-raised-button fxLayout="row" fxLayoutAlign="center center" color="primary" [disabled]="!addFundsForm.valid"
+          (click)="addFunds()">
+          <mat-spinner *ngIf="apiProgress" [diameter]="20"></mat-spinner>
+          <span *ngIf="!apiProgress">Add Funds</span>
+        </button>
+      </div>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="100%">
+      <div>
+        <span class="primary-text">Step 1: </span> Add the mentioned Bank details
+      </div>
+      <div class="m-b-10 mat-caption grey-text">
+        (In your bank account)
+      </div>
+      <div class="m-b-10">
+        <span class="primary-text">Step 2: </span> Transfer the amount which you would like to Add Funds in your
+        account
+      </div>
+      <div>
+        <span class="primary-text">Step 3: </span> Enter the Amount and Mobile Number
+      </div>
+      <div class="m-b-10 mat-caption grey-text">
+        (For Example: 200 & +919233456789)
+      </div>
+      <div class="m-b-10">
+        <span class="primary-text">Step 4: </span> Click on Add Funds
+      </div>
+      <div>
+        <span class="primary-text">Step 5: </span> Amount will get added in 1hr - 10hrs
+      </div>
+    </div>
+  </div>
+</form>

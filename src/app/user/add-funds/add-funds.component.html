@@ -6,64 +6,13 @@
   <div class="mat-elevation-z2">
     <mat-tab-group>
       <mat-tab label="Paytm">
-        <form [formGroup]="addFundsForm">
-          <div class="add-funds" fxLayout="row">
-            <div fxFlex="50%" fxFlex.xs="100%">
-              <div class="paytm-qr-code m-b-20">
-
-              </div>
-              <div class="w-350">
-                <mat-form-field class="full-width m-b-20" color="accent" floatLabel="always">
-                  <input matInput type="number" placeholder="Amount (Rs.)" formControlName="amount">
-                  <mat-error *ngIf="amount.hasError('required')">
-                    Amount is required
-                  </mat-error>
-                  <mat-error *ngIf="amount.hasError('min')">
-                    Amount should be greated than 5
-                  </mat-error>
-                  <mat-hint align="start">
-                    Enter the amount which you have sent to the above QR code.
-                  </mat-hint>
-                </mat-form-field>
-              </div>
-              <div class="w-350">
-                <mat-form-field class="full-width m-b-20" color="accent" floatLabel="always">
-                  <input matInput type="text" placeholder="Transaction ID" formControlName="orderId">
-                  <mat-error *ngIf="orderId.hasError('required')">
-                    Order ID is required
-                  </mat-error>
-                  <mat-hint align="start">
-                    Enter the transaction ID which you got after sending the amount.
-                  </mat-hint>
-                </mat-form-field>
-              </div>
-
-              <div class="m-t-20">
-                <button mat-raised-button fxLayout="row" fxLayoutAlign="center center" color="primary" [disabled]="!addFundsForm.valid" (click)="addFunds()">
-                  <mat-spinner *ngIf="apiProgress" [diameter]="20"></mat-spinner>
-                  <span *ngIf="!apiProgress">Add Funds</span>
-                </button>
-              </div>
-            </div>
-            <div fxFlex="50%" fxHide.xs>
-              <div class="m-b-10">
-                <span class="primary-text">Step 1: </span> Scan Paytm QR Code
-              </div>
-              <div class="m-b-10">
-                <span class="primary-text">Step 2: </span> Send Money to the QR code from your paytm
-              </div>
-              <div>
-                <span class="primary-text">Step 3: </span> Put Transaction ID and Amount
-              </div>
-              <div class="m-b-10 mat-caption grey-text">
-                (For Example: 200 & 20181513830040880)
-              </div>
-              <div>
-                <span class="primary-text">Step 4: </span> Click on Add Funds
-              </div>
-            </div>
-          </div>
-        </form>
+        <lw-paytm></lw-paytm>
+      </mat-tab>
+      <mat-tab label="Tez">
+        <lw-tez></lw-tez>
+      </mat-tab>
+      <mat-tab label="Bank">
+        <lw-bank></lw-bank>
       </mat-tab>
     </mat-tab-group>
   </div>
