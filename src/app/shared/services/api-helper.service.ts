@@ -93,12 +93,12 @@ export class ApiHelperService {
   }
 
   getServiceCategories() {
-    const url = 'mediaPromotion/service/serviceCategory';
+    const url = 'mediaPromotion/service/getCategory';
     return this.postRequest( url, { session: this.userModel.session } );
   }
 
   getSubCategories( id ) {
-    const url = 'mediaPromotion/service/subCategory';
+    const url = 'mediaPromotion/service/getSubCategory';
     return this.postRequest( url, { session: this.userModel.session, parentId: id } );
   }
 
