@@ -102,9 +102,14 @@ export class ApiHelperService {
     return this.postRequest( url, { session: this.userModel.session, parentId: id } );
   }
 
-  getServiceDetails( serviceCategoryId: string, subCategoryId: string ): Observable<any> {
-    const url = 'mediaPromotion/service/serviceDetail';
+  getServicesList( serviceCategoryId: string, subCategoryId: string ): Observable<any> {
+    const url = 'mediaPromotion/service/serviceList';
     return this.postRequest( url, { session: this.userModel.session, catId: serviceCategoryId, subCatId: subCategoryId } );
+  }
+
+  getServiceDetail( serviceId: string ): Observable<any> {
+    const url = 'mediaPromotion/service/serviceDetail';
+    return this.postRequest( url, { session: this.userModel.session, serviceId: serviceId } );
   }
 
   addOrder( order: AddOrder ) {

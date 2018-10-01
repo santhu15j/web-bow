@@ -47,8 +47,8 @@ export class AddOrderComponent implements OnInit {
       } );
   }
 
-  getServiceDetails( serviceCategoryId: string, subCategoryId: string ) {
-    this._apiHelper.getServiceDetails( serviceCategoryId, subCategoryId )
+  getServicesList( serviceCategoryId: string, subCategoryId: string ) {
+    this._apiHelper.getServicesList( serviceCategoryId, subCategoryId )
       .subscribe( ( response: ApiResponse ) => {
         if ( response && response.status ) {
           this.serviceDetails = response.response ? response.response : [];
@@ -58,9 +58,20 @@ export class AddOrderComponent implements OnInit {
       } );
   }
 
+  getServiceDetail( serviceId: string ) {
+    this._apiHelper.getServiceDetail( serviceId )
+      .subscribe( ( response: ApiResponse ) => {
+        if ( response && response.status ) {
+          console.log( response );
+        } else {
+          // Error Handling
+        }
+      } );
+  }
+
   onSubCategoryChange( id: string ) {
     this.selectedSubCategory = this.subCategories.find( sc => sc.id === id );
-    this.getServiceDetails( this.serviceCategory.id, id );
+    this.getServicesList( this.serviceCategory.id, id );
   }
 
   onServiceDetailChange( id: string ) {
@@ -72,6 +83,7 @@ export class AddOrderComponent implements OnInit {
       Validators.min( this.selectedServiceDetail.minQuantity ),
       Validators.max( this.selectedServiceDetail.maxQuantity )
     ] );
+    this.getServiceDetail( id );
   }
 
   addOrder() {
