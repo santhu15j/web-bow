@@ -11,7 +11,8 @@
       </mat-error>
     </mat-form-field>
     <mat-form-field fxFlex="70%" class="m-b-20">
-      <mat-select placeholder="Service" formControlName="serviceId" [disabled]="!addOrderForm.value.subCategoryId" (change)="onServiceDetailChange($event.value)">
+      <mat-select placeholder="Service" formControlName="serviceId" [disabled]="!addOrderForm.value.subCategoryId"
+        (change)="onServiceDetailChange($event.value)">
         <mat-option *ngFor="let serviceDetail of serviceDetails" [value]="serviceDetail.id">
           {{ serviceDetail.title }}
         </mat-option>
@@ -57,9 +58,8 @@
   </div>
   <div fxLayout="row" class="m-b-10">
     <mat-form-field fxFlex="100%">
-      <input type="text" matInput placeholder="Budget" disabled [value]="selectedServiceDetail ? addOrderForm.value.quantity * selectedServiceDetail.servicePrice : null"
-      />
-      <mat-hint align="end" *ngIf="selectedServiceDetail">Price:
+      <input type="text" matInput placeholder="Budget" disabled [value]="selectedServiceDetail ? addOrderForm.value.quantity * 0.01 * selectedServiceDetail.servicePrice : null" />
+      <mat-hint align="end" *ngIf="selectedServiceDetail">Price per 100:
         <span class="success-text">Rs {{ selectedServiceDetail.servicePrice }}</span>
       </mat-hint>
     </mat-form-field>

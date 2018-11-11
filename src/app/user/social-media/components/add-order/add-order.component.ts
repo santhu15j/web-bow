@@ -41,6 +41,10 @@ export class AddOrderComponent implements OnInit {
       .subscribe( ( response: ApiResponse ) => {
         if ( response && response.status ) {
           this.subCategories = response.response ? response.response : [];
+          if ( this.subCategories.length > 0 ) {
+            this.addOrderForm.controls[ 'subCategoryId' ].setValue( this.subCategories[ 0 ].id );
+            this.onSubCategoryChange( this.subCategories[ 0 ].id );
+          }
         } else {
           // Error Handling
         }
@@ -52,6 +56,10 @@ export class AddOrderComponent implements OnInit {
       .subscribe( ( response: ApiResponse ) => {
         if ( response && response.status ) {
           this.serviceDetails = response.response ? response.response : [];
+          if ( this.serviceDetails.length > 0 ) {
+            this.addOrderForm.controls[ 'serviceId' ].setValue( this.serviceDetails[ 0 ].id );
+            this.onServiceDetailChange( this.serviceDetails[ 0 ].id );
+          }
         } else {
           // Error Handling
         }
