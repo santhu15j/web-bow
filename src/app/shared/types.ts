@@ -29,4 +29,5 @@ export interface AddOrder {
   serviceId: string;
   quantity: string;
   link: string;
+  amount: number;
 }

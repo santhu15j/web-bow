@@ -100,7 +100,8 @@ export class AddOrderComponent implements OnInit {
       this._apiHelper.addOrder( {
         serviceId: this.addOrderForm.value.serviceId,
         link: this.addOrderForm.value.link,
-        quantity: this.addOrderForm.value.quantity
+        quantity: this.addOrderForm.value.quantity,
+        amount: this.addOrderForm.value.quantity * 0.01 * this.selectedServiceDetail.servicePrice
       } ).subscribe( ( response: any ) => {
         console.log( response );
         this.apiProgress = false;
