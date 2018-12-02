@@ -13,10 +13,13 @@ import {
   MatSelectModule,
   MatSlideToggleModule,
   MatProgressSpinnerModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDialogModule,
+  MatChipsModule
 } from '@angular/material';
 import { AddOrderComponent } from './components/add-order/add-order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @NgModule( {
   imports: [
@@ -32,8 +35,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSlideToggleModule,
     MatProgressSpinnerModule,
     MatSnackBarModule,
+    MatDialogModule,
+    MatChipsModule,
     ReactiveFormsModule
   ],
-  declarations: [ SocialMediaComponent, AddOrderComponent ]
+  declarations: [ SocialMediaComponent, AddOrderComponent, OrderDetailsComponent ],
+  entryComponents: [ OrderDetailsComponent ]
 } )
 export class SocialMediaModule { }

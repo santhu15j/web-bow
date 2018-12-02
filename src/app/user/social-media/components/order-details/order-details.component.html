@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Order Success</h1>
+<div mat-dialog-content class="order-details" *ngIf="order">
+  <div class="m-b-20 success-text">
+    <i>
+      Your order is placed! Please wait for 2 minutes to see status update!
+    </i>
+  </div>
+  <div class="m-b-10">
+    <span class="mat-body-1">Order ID</span> :
+    <span class="mat-body-2">{{ order.orderId }}</span>
+  </div>
+  <div class="m-b-10">
+    <span class="mat-body-1">Service</span> :
+    <span class="mat-body-2">{{ order.service.title }}</span>
+  </div>
+  <div class="m-b-10">
+    <span class="mat-body-1">Quantity</span> :
+    <span class="mat-body-2">{{ order.quantity }}</span>
+  </div>
+  <div class="m-b-10">
+    <span class="mat-body-1">Link</span> :
+    <span class="mat-body-2">{{ order.link }}</span>
+  </div>
+  <div class="m-b-10">
+    <span class="mat-body-1">Balance</span> :
+    <span class="mat-body-2">{{ order.balance }}</span>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="accent" [mat-dialog-close]="null" cdkFocusInitial>OK</button>
+</div>

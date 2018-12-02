@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ServiceCategory, ApiResponse, SubCategory, ServiceDetail } from '../../../../shared/types';
 import { ApiHelperService } from '../../../../shared/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material';
 } )
 export class AddOrderComponent implements OnInit {
   @Input() serviceCategory: ServiceCategory = null;
+  @Output() orderPlaced: EventEmitter<any> = new EventEmitter<any>();
   public subCategories: SubCategory[] = [];
   public serviceDetails: ServiceDetail[] = [];
   public selectedSubCategory: SubCategory = null;
@@ -107,8 +108,13 @@ export class AddOrderComponent implements OnInit {
         this.apiProgress = false;
         if ( response.status ) {
           this._snack.open( 'Placed order successfully!', null, { duration: 3000, verticalPosition: 'top', panelClass: 'success' } );
+          this.orderPlaced.emit( {
+            ...response,
+            service: this.selectedServiceDetail,
+            link: this.link.value
+          } );
         } else {
-          this._snack.open( response.response.message, null, { duration: 3000, verticalPosition: 'top', panelClass: 'error' } );
+          this._snack.open( response.message, null, { duration: 3000, verticalPosition: 'top', panelClass: 'error' } );
         }
       } );
     }

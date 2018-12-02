@@ -31,7 +31,7 @@
               {{ serviceCategory.description }}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <lw-add-order [serviceCategory]="serviceCategory"></lw-add-order>
+          <lw-add-order [serviceCategory]="serviceCategory" (orderPlaced)="showOrderDetail($event)"></lw-add-order>
         </mat-expansion-panel>
       </mat-accordion>
     </div>

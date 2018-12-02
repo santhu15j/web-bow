@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiHelperService } from '../../shared/services';
 import { ServiceCategory, ApiResponse } from '../../shared/types';
+import { MatDialog } from '@angular/material';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 @Component( {
   selector: 'lw-social-media',
@@ -11,7 +13,8 @@ export class SocialMediaComponent implements OnInit {
   public serviceCategories: ServiceCategory[] = [];
 
   constructor(
-    private _apiHelper: ApiHelperService
+    private _apiHelper: ApiHelperService,
+    private _dialog: MatDialog
   ) {
 
   }
@@ -26,6 +29,14 @@ export class SocialMediaComponent implements OnInit {
           // Error handling
         }
       } );
+  }
+
+  showOrderDetail( order ) {
+    let ref = this._dialog.open( OrderDetailsComponent, {
+      width: '450px'
+    } );
+    ref.componentInstance.order = order;
+    ref.afterClosed().subscribe( () => ref = null );
   }
 
   ngOnInit() {
