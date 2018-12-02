@@ -1,0 +1,83 @@
+<div class="fund-history-container">
+  <div class="breadcrumbs mat-caption m-b-20">
+    <a routerLink="/user">Home</a> &nbsp; > &nbsp;
+    <a routerLink="/user/fund-history">Fund History</a>
+  </div>
+  <div class="fund-history mat-elevation-z2">
+    <div class="fund-history-loading-shade" *ngIf="isLoadingResults || (!funds || funds.length == 0)">
+      <mat-spinner color="primary" diameter="30" *ngIf="isLoadingResults"></mat-spinner>
+      <div class="fund-history-no-data" *ngIf="!isLoadingResults && (!funds || funds.length == 0)">
+        No data
+      </div>
+    </div>
+
+    <div class="fund-history-table-container">
+      <!--mat-paginator showFirstLastButtons="true" length="1000" pageSize="25" [pageIndex]="currentPage - 1" (page)="getFundHistory($event.pageIndex + 1)">
+      </mat-paginator-->
+      <div fxLayout="row" class="fund-history-table">
+        <mat-table #table [dataSource]="funds" fxFlex="100%" fxFlex.xs="1200px" fxFlex.sm="1200px">
+
+          <!-- No Column -->
+          <ng-container matColumnDef="No">
+            <mat-header-cell *matHeaderCellDef> No </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <b> #{{ fund.id }} </b>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Payment Mode Column -->
+          <ng-container matColumnDef="Payment Mode">
+            <mat-header-cell *matHeaderCellDef> Payment Mode </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              {{ fund.paymentMode }}
+            </mat-cell>
+          </ng-container>
+
+          <!-- Type Column -->
+          <ng-container matColumnDef="Type">
+            <mat-header-cell *matHeaderCellDef> Type </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <mat-chip [ngClass]="{ 'success-chip': fund.addDiduct === 'Added', 'alert-chip': fund.addDiduct === 'Diducted'}">{{
+                fund.addDiduct }} </mat-chip>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Balance Column -->
+          <ng-container matColumnDef="Balance">
+            <mat-header-cell *matHeaderCellDef> Balance </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <span class="mat-caption grey-text"><i class="fa fa-rupee-sign"></i> {{ fund.balance }} </span>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Amount Column -->
+          <ng-container matColumnDef="Amount">
+            <mat-header-cell *matHeaderCellDef> Amount </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <span class="mat-caption"><i class="fa fa-rupee-sign"></i> {{ fund.amount }} </span>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Date & Time Column -->
+          <ng-container matColumnDef="Date Time">
+            <mat-header-cell *matHeaderCellDef> Date & Time </mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <span class="mat-caption grey-text">{{ fund.creationDate | date: 'MMM d, y, h:mm a' }} </span>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Transaction ID Column -->
+          <ng-container matColumnDef="Transaction ID">
+            <mat-header-cell *matHeaderCellDef> Transaction ID</mat-header-cell>
+            <mat-cell *matCellDef="let fund">
+              <b>{{ fund.addDiduct === 'Added' ? fund.txnId : fund.orderId }} </b>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="fundColumns"></mat-header-row>
+          <mat-row *matRowDef="let fund; columns: fundColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+.fund-history-container {
+    padding: 20px;
+  }
+  
+  .fund-history {
+    position: relative;
+  }
+  
+  .fund-history-table-container {
+    position: relative;
+    min-height: calc(100vh - 100px);
+    width: 100%;
+  }
+  
+  .fund-history-table {
+    width: 100%;
+    overflow: auto;
+  }
+  
+  .fund-history-loading-shade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 56px;
+    right: 0;
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .fund-history-no-data {
+    color: #980000;
+    max-width: 360px;
+    text-align: center;
+  }
+  
+  .mat-column-No {
+    flex: 0 0 10%;
+  }
+  
+  .mat-column-Balance,
+  .mat-column-Amount {
+    flex: 0 0 10%;
+  }
+  
+  .mat-column-Type,
+  .mat-column-Date-Time {
+    flex: 0 0 15%;
+  }
+  
+  .mat-column-Payment-Mode {
+    flex: 0 0 20%;
+  }
+  
+  

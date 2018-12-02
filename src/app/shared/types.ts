@@ -38,3 +38,15 @@ export interface OrderStatus {
   refund: string;
   pending: string;
 }
+
+export interface Fund {
+  id: string;
+  amount: string;
+  balance: string;
+  paymentMode: string;
+  addDiduct: string;
+  orderId: string;
+  txnId: string;
+  creationDate: string;
+  updationDate: string;
+}

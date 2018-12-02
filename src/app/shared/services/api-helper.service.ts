@@ -131,4 +131,9 @@ export class ApiHelperService {
     const url = 'mediaPromotion/user/getOrderStatusBar';
     return this.postRequest( url, { session: this.userModel.session } );
   }
+
+  getWalletHistory() {
+    const url = 'mediaPromotion/user/getWalletHistory';
+    return this.postRequest( url, { session: this.userModel.session } );
+  }
 }

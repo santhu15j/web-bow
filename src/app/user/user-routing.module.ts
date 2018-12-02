@@ -25,6 +25,10 @@ export const routes: Routes = [
       {
         path: 'add-funds',
         loadChildren: 'app/user/add-funds/add-funds.module#AddFundsModule'
+      },
+      {
+        path: 'fund-history',
+        loadChildren: 'app/user/fund-history/fund-history.module#FundHistoryModule'
       }
     ]
   }

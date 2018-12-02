@@ -42,7 +42,8 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container class="main-container">
-    <mat-sidenav class="mat-elevation-z2 menu-container" #sidenav [mode]="_coreHelper.isMobile ? 'over' : 'side'" [opened]="!_coreHelper.isMobile">
+    <mat-sidenav class="mat-elevation-z2 menu-container" #sidenav [mode]="_coreHelper.isMobile ? 'over' : 'side'"
+      [opened]="!_coreHelper.isMobile">
       <!--div fxLayout="row" fxLayoutAlign="center center" class="amount-info"> Rs 500.00 </div-->
       <mat-nav-list>
         <a mat-list-item routerLink="/user/social-media" routerLinkActive="active">
@@ -57,6 +58,10 @@
           <mat-icon fontSet="fa" fontIcon="fa-bell"></mat-icon>
           Notifications
         </a-->
+        <a mat-list-item routerLink="/user/fund-history" routerLinkActive="active">
+          <mat-icon fontSet="fa" fontIcon="fa-history"></mat-icon>
+          Fund History
+        </a>
         <a mat-list-item routerLink="/user/order-history" routerLinkActive="active">
           <mat-icon fontSet="fa" fontIcon="fa-clock"></mat-icon>
           Order History
