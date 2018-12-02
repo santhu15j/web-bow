@@ -31,3 +31,10 @@ export interface AddOrder {
   link: string;
   amount: number;
 }
+
+export interface OrderStatus {
+  processing: string;
+  completed: string;
+  refund: string;
+  pending: string;
+}

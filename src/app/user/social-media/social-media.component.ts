@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiHelperService } from '../../shared/services';
-import { ServiceCategory, ApiResponse } from '../../shared/types';
+import { ServiceCategory, ApiResponse, OrderStatus } from '../../shared/types';
 import { MatDialog } from '@angular/material';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
@@ -11,6 +11,7 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
 } )
 export class SocialMediaComponent implements OnInit {
   public serviceCategories: ServiceCategory[] = [];
+  public orderStatus: OrderStatus = null;
 
   constructor(
     private _apiHelper: ApiHelperService,
@@ -39,8 +40,20 @@ export class SocialMediaComponent implements OnInit {
     ref.afterClosed().subscribe( () => ref = null );
   }
 
+  getOrderStatusBar() {
+    this._apiHelper.getOrderStatusBar()
+      .subscribe( ( response: ApiResponse ) => {
+        if ( response.status && response.response ) {
+          this.orderStatus = response.response;
+        } else {
+          // Error handling
+        }
+      } );
+  }
+
   ngOnInit() {
     this.getServiceCategories();
+    this.getOrderStatusBar();
   }
 
 }
